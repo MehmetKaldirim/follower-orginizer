@@ -1,30 +1,46 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { nanoid } from "nanoid";
 import classes from "./Table.module.css";
-import followersData from "../followersData";
-import followingsData from "../followingsData";
+import followersData from "../../followersData";
+import followingsData from "../../followingsData";
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
 
 const Table = () => {
   //const [counts, setCounts] = useState({ a: 15, b: 0, c: 0 });
 
   const { followers: followers } = followersData;
   const { followings: followings } = followingsData;
-  const valueFollowersList = [];
-  const valueFollowingsList = [];
+  const newFollower = [];
+  const newFollowing = [];
+  const difBetween = [];
+  const followerValue = [];
+
   const followingButNotFollowers = [];
 
   for (let i = 1; i < followers.length; i++) {
-    const a = followers[i].string_list_data[0];
-    valueFollowersList.push(a);
+    const dummyFollower = followers[i].string_list_data[0];
+    const value = followers[i].string_list_data[0].value;
+    followerValue.push(value);
+    const follower = { ...dummyFollower, id: i };
+    newFollower.push(follower);
   }
 
-  for (let i = 1; i < 5; i++) {
-    const b = followings[i].string_list_data[0];
-    if (!valueFollowersList.includes(b)) {
-      followingButNotFollowers.push(b);
-    }
+  for (let i = 1; i < followings.length; i++) {
+    const dummyFollowing = followings[i].string_list_data[0];
+    const value = followings[i].string_list_data[0].value;
 
-    valueFollowingsList.push(b);
+    if (!followerValue.includes(value)) {
+      difBetween.push(dummyFollowing);
+    }
+    const following = { ...newFollowing, id: i };
+    newFollowing.push(following);
+  }
+
+  for (let i = 1; i < difBetween.length; i++) {
+    const dummyFollowing = difBetween[i];
+    const following = { ...dummyFollowing, id: i };
+    followingButNotFollowers.push(following);
   }
 
   //setNotFollowers(followingButNotFollowers);
@@ -34,6 +50,7 @@ const Table = () => {
     value: "",
     timestamp: 0,
   });
+  const [editFollowerId, setEditFollowerId] = useState(null);
 
   const addFormHandler = (event) => {
     event.preventDefault();
@@ -55,10 +72,41 @@ const Table = () => {
 
     const newFollowers = [...notFollowers, newFollower];
     setNotFollowers(newFollowers);
+
+    /*console.log("here new follower list");
+    console.log(newFollower);
+
+    console.log("here new following list");
+    console.log(newFollowing);
+
+    console.log("here new diference");
+    console.log(followingButNotFollowers);*/
   };
 
   return (
     <div className="app-container">
+      <form>
+        <table className={classes.table}>
+          <thead>
+            <tr>
+              <th>href</th>
+              <th>value</th>
+              <th>timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            {notFollowers.map((follower) => (
+              <Fragment>
+                {editFollowerId === follower.id ? (
+                  <EditableRow />
+                ) : (
+                  <ReadOnlyRow follower={follower} />
+                )}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </form>
       <h2>Add a follower</h2>
       <form className={classes.form} onSubmit={submitFormHandler}>
         <input
@@ -84,25 +132,6 @@ const Table = () => {
         />
         <button type="submit">Add</button>
       </form>
-
-      <table className={classes.table}>
-        <thead>
-          <tr>
-            <th>href</th>
-            <th>value</th>
-            <th>timestamp</th>
-          </tr>
-        </thead>
-        <tbody>
-          {notFollowers.map((follower) => (
-            <tr>
-              <td>{follower.href}</td>
-              <td>{follower.value}</td>
-              <td>{follower.timestamp}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 };
