@@ -37,7 +37,7 @@ const Table = () => {
     newFollowing.push(following);
   }
 
-  for (let i = 1; i < difBetween.length; i++) {
+  for (let i = 1; i < 5; i++) {
     const dummyFollowing = difBetween[i];
     const following = { ...dummyFollowing, id: i };
     followingButNotFollowers.push(following);
@@ -45,11 +45,19 @@ const Table = () => {
 
   //setNotFollowers(followingButNotFollowers);
   const [notFollowers, setNotFollowers] = useState(followingButNotFollowers);
+
   const [addFormData, setAddFormData] = useState({
     href: "",
     value: "",
-    timestamp: 0,
+    timestamp: "",
   });
+
+  const [editFormData, setEditFormData] = useState({
+    href: "",
+    value: "",
+    timestamp: "",
+  });
+
   const [editFollowerId, setEditFollowerId] = useState(null);
 
   const addFormHandler = (event) => {
@@ -61,10 +69,21 @@ const Table = () => {
 
     setAddFormData(newFormData);
   };
+
+  const editFormHandler = (event) => {
+    event.preventDefault();
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  };
+
   const submitFormHandler = (event) => {
     event.preventDefault();
     const newFollower = {
-      //id: nanoid(),
+      id: nanoid(),
       href: addFormData.href,
       value: addFormData.value,
       timestamp: addFormData.timestamp,
@@ -72,8 +91,41 @@ const Table = () => {
 
     const newFollowers = [...notFollowers, newFollower];
     setNotFollowers(newFollowers);
+  };
 
-    /*console.log("here new follower list");
+  const submitEditFormHandler = (event) => {
+    event.preventDefault();
+
+    const editedFollower = {
+      id: editFollowerId,
+      href: editFormData.href,
+      value: editFormData.value,
+      timestamp: editFormData.timestamp,
+    };
+
+    const newFollowers = [...notFollowers];
+    const index = notFollowers.findIndex(
+      (follower) => follower.id === editFollowerId
+    );
+    newFollowers[index] = editedFollower;
+    setNotFollowers(newFollowers);
+    setEditFollowerId(null);
+  };
+
+  const editClickHandler = (event, follower) => {
+    event.preventDefault();
+    setEditFollowerId(follower.id);
+
+    const formValues = {
+      href: follower.href,
+      value: follower.value,
+      timestamp: follower.timestamp,
+    };
+
+    setEditFormData(formValues);
+  };
+
+  /*console.log("here new follower list");
     console.log(newFollower);
 
     console.log("here new following list");
@@ -81,26 +133,31 @@ const Table = () => {
 
     console.log("here new diference");
     console.log(followingButNotFollowers);*/
-  };
-
   return (
     <div className="app-container">
-      <form>
+      <form onSubmit={submitEditFormHandler}>
         <table className={classes.table}>
           <thead>
             <tr>
-              <th>href</th>
-              <th>value</th>
-              <th>timestamp</th>
+              <th>Href</th>
+              <th>Value</th>
+              <th>Timestamp</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {notFollowers.map((follower) => (
               <Fragment>
                 {editFollowerId === follower.id ? (
-                  <EditableRow />
+                  <EditableRow
+                    editFormData={editFormData}
+                    editFormHandler={editFormHandler}
+                  />
                 ) : (
-                  <ReadOnlyRow follower={follower} />
+                  <ReadOnlyRow
+                    follower={follower}
+                    editClickHandler={editClickHandler}
+                  />
                 )}
               </Fragment>
             ))}
