@@ -125,6 +125,10 @@ const Table = () => {
     setEditFormData(formValues);
   };
 
+  const cancelClickHandler = () => {
+    setEditFollowerId(null);
+  };
+
   /*console.log("here new follower list");
     console.log(newFollower);
 
@@ -152,6 +156,7 @@ const Table = () => {
                   <EditableRow
                     editFormData={editFormData}
                     editFormHandler={editFormHandler}
+                    cancelClickHandler={cancelClickHandler}
                   />
                 ) : (
                   <ReadOnlyRow
