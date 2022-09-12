@@ -129,6 +129,18 @@ const Table = () => {
     setEditFollowerId(null);
   };
 
+  const deleteClickHandler = (followerId) => {
+    const newFollowers = [...notFollowers];
+
+    const index = notFollowers.findIndex(
+      (follower) => follower.id === followerId
+    );
+
+    newFollowers.splice(index, 1);
+
+    setNotFollowers(newFollowers);
+  };
+
   /*console.log("here new follower list");
     console.log(newFollower);
 
@@ -157,11 +169,13 @@ const Table = () => {
                     editFormData={editFormData}
                     editFormHandler={editFormHandler}
                     cancelClickHandler={cancelClickHandler}
+                    379a300949a2
                   />
                 ) : (
                   <ReadOnlyRow
                     follower={follower}
                     editClickHandler={editClickHandler}
+                    deleteClickHandler={deleteClickHandler}
                   />
                 )}
               </Fragment>

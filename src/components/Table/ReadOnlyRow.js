@@ -1,8 +1,11 @@
 import react from "react";
 
-const ReadOnlyRow = ({ follower, editClickHandler }) => {
-  const onClickHandler = (event) => {
+const ReadOnlyRow = ({ follower, editClickHandler, deleteClickHandler }) => {
+  const onClickEditHandler = (event) => {
     editClickHandler(event, follower);
+  };
+  const onClickDeleteHandler = () => {
+    deleteClickHandler(follower.id);
   };
   return (
     <div>
@@ -11,8 +14,11 @@ const ReadOnlyRow = ({ follower, editClickHandler }) => {
         <td>{follower.value}</td>
         <td>{follower.timestamp}</td>
         <td>
-          <button type="button" onClick={onClickHandler}>
+          <button type="button" onClick={onClickEditHandler}>
             Edit
+          </button>
+          <button type="button" onClick={onClickDeleteHandler}>
+            Delete
           </button>
         </td>
       </tr>
