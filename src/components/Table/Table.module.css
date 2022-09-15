@@ -10,22 +10,30 @@
   width: 100%;
 }
 
-.table th,
-td {
+.table td {
   border: 1px solid #ffffff;
   text-align: left;
   padding: 8px;
   font-size: 32px;
-}
-
-.table th {
-  background-color: rgb(117, 201, 250);
-}
-
-.table td {
   background-color: rgb(205, 235, 253);
 }
 
+.table th {
+  border: 1px solid #ffffff;
+  text-align: left;
+  padding: 8px;
+  font-size: 32px;
+  background-color: rgb(117, 201, 250);
+}
+.table h2 {
+  border: 1px solid #ffffff;
+  text-align: left;
+  padding: 8px;
+  font-size: 32px;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: rgb(117, 201, 250);
+}
 .form {
   display: flex;
   gap: 5px;

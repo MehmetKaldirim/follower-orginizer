@@ -10,6 +10,7 @@ const ReadOnlyRow = ({ follower, editClickHandler, deleteClickHandler }) => {
   return (
     <div>
       <tr>
+        <td>{follower.id}</td>
         <td>{follower.href}</td>
         <td>{follower.value}</td>
         <td>{follower.timestamp}</td>

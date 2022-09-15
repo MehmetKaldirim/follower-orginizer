@@ -15,6 +15,7 @@ const Table = () => {
   const newFollowing = [];
   const difBetween = [];
   const followerValue = [];
+  const notFolowerValue = [];
 
   const followingButNotFollowers = [];
 
@@ -37,10 +38,11 @@ const Table = () => {
     newFollowing.push(following);
   }
 
-  for (let i = 1; i < 5; i++) {
+  for (let i = 72; i < difBetween.length; i++) {
     const dummyFollowing = difBetween[i];
     const following = { ...dummyFollowing, id: i };
     followingButNotFollowers.push(following);
+    notFolowerValue.push(following.value);
   }
 
   //setNotFollowers(followingButNotFollowers);
@@ -59,6 +61,7 @@ const Table = () => {
   });
 
   const [editFollowerId, setEditFollowerId] = useState(null);
+  const [isIncluded, setIsIncluded] = useState(false);
 
   const addFormHandler = (event) => {
     event.preventDefault();
@@ -141,6 +144,21 @@ const Table = () => {
     setNotFollowers(newFollowers);
   };
 
+  const onClickSearchHandler = (event) => {
+    event.preventDefault();
+    const newFollower = {
+      id: nanoid(),
+      href: addFormData.href,
+      value: addFormData.value,
+      timestamp: addFormData.timestamp,
+    };
+    console.log(newFollower.value);
+    if (notFolowerValue.includes(newFollower.value)) {
+      setIsIncluded(true);
+    }
+
+    console.log("is included bence = " + isIncluded);
+  };
   /*console.log("here new follower list");
     console.log(newFollower);
 
@@ -169,7 +187,6 @@ const Table = () => {
                     editFormData={editFormData}
                     editFormHandler={editFormHandler}
                     cancelClickHandler={cancelClickHandler}
-                    379a300949a2
                   />
                 ) : (
                   <ReadOnlyRow
@@ -183,7 +200,7 @@ const Table = () => {
           </tbody>
         </table>
       </form>
-      <h2>Add a follower</h2>
+      <h2>Serach a follower</h2>
       <form className={classes.form} onSubmit={submitFormHandler}>
         <input
           type="text"
@@ -207,6 +224,10 @@ const Table = () => {
           onChange={addFormHandler}
         />
         <button type="submit">Add</button>
+        <button type="button" onClick={onClickSearchHandler}>
+          Search
+        </button>
+        {isIncluded && <button type="button">Founded</button>}
       </form>
     </div>
   );
