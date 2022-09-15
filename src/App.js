@@ -1,9 +1,7 @@
-//import Counter from "./components/Counter";
-//import Followers from "./components/NotFollowers";
-//import Following from "./components/Following";
+import Counter from "./components/Counter";
 import Table from "./components/Table/Table";
 function App() {
-  return <Table />;
+  return <Counter />;
 }
 
 export default App;

@@ -38,7 +38,7 @@ const Table = () => {
     newFollowing.push(following);
   }
 
-  for (let i = 72; i < difBetween.length; i++) {
+  for (let i = 199; i < difBetween.length; i++) {
     const dummyFollowing = difBetween[i];
     const following = { ...dummyFollowing, id: i };
     followingButNotFollowers.push(following);
@@ -62,6 +62,7 @@ const Table = () => {
 
   const [editFollowerId, setEditFollowerId] = useState(null);
   const [isIncluded, setIsIncluded] = useState(false);
+  const [followerId, setFollowerId] = useState(null);
 
   const addFormHandler = (event) => {
     event.preventDefault();
@@ -154,6 +155,11 @@ const Table = () => {
     };
     console.log(newFollower.value);
     if (notFolowerValue.includes(newFollower.value)) {
+      const index = notFollowers.findIndex(
+        (follower) => follower.value === newFollower.value
+      );
+      const id = notFollowers[index].id;
+      setFollowerId(id);
       setIsIncluded(true);
     }
 
@@ -227,7 +233,7 @@ const Table = () => {
         <button type="button" onClick={onClickSearchHandler}>
           Search
         </button>
-        {isIncluded && <button type="button">Founded</button>}
+        {isIncluded && <button type="button">{followerId}</button>}
       </form>
     </div>
   );
