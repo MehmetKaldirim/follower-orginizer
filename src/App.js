@@ -15,6 +15,7 @@ function App() {
       <Header />
       {!isAuth && <Auth />}
       {isAuth && <UserProfile />}
+      {isAuth && <Table />}
       <Counter />
     </Fragment>
   );

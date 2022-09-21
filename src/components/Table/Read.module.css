@@ -1,0 +1,7 @@
+.read td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 32px;
+  table-layout: auto;
+  width: 100%;
+}

@@ -1,4 +1,5 @@
 import react from "react";
+import classes from "./Read.module.css";
 
 const ReadOnlyRow = ({ follower, editClickHandler, deleteClickHandler }) => {
   const onClickEditHandler = (event) => {
@@ -8,10 +9,14 @@ const ReadOnlyRow = ({ follower, editClickHandler, deleteClickHandler }) => {
     deleteClickHandler(follower.id);
   };
   return (
-    <div>
+    <div className={classes.read}>
       <tr>
-        <td>{follower.id}</td>
-        <td>{follower.href}</td>
+        <td style={{ color: "red", "font-size": 32 }}>{follower.id}</td>
+        <td
+          style={{ "background-color": "green", color: "red", "font-size": 32 }}
+        >
+          {follower.href}
+        </td>
         <td>{follower.value}</td>
         <td>{follower.timestamp}</td>
         <td>

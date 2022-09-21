@@ -7,33 +7,38 @@
 
 .table {
   border-collapse: collapse;
+  margin: 25px 0;
   width: 100%;
+  font-size: 0.9em;
+  table-layout: auto;
+  table-layout: fixed;
+  table-layout: inherit;
 }
 
-.table td {
-  border: 1px solid #ffffff;
+.table thead tr {
+  background-color: blueviolet;
+  color: white;
   text-align: left;
-  padding: 8px;
-  font-size: 32px;
-  background-color: rgb(205, 235, 253);
+  font-weight: bold;
 }
 
 .table th {
-  border: 1px solid #ffffff;
+  padding: 12px 15px;
   text-align: left;
-  padding: 8px;
   font-size: 32px;
-  background-color: rgb(117, 201, 250);
+  table-layout: auto;
 }
-.table h2 {
-  border: 1px solid #ffffff;
-  text-align: left;
-  padding: 8px;
-  font-size: 32px;
-  border-collapse: collapse;
-  width: 100%;
-  background-color: rgb(117, 201, 250);
+
+.table tbody tr {
+  border-bottom: 1px solid #5c1c1c;
 }
+.table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.table td {
+  background-color: rgb(205, 235, 255);
+}
+
 .form {
   display: flex;
   gap: 5px;
