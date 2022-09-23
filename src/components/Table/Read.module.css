@@ -5,3 +5,19 @@
   table-layout: auto;
   width: 100%;
 }
+
+.row1 {
+  color: brown;
+}
+
+.row2 {
+  background-color: blanchedalmond;
+}
+
+.row3 {
+  color: rgb(165, 42, 65);
+}
+
+.row4 {
+  color: rgb(42, 165, 81);
+}

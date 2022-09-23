@@ -11,14 +11,10 @@ const ReadOnlyRow = ({ follower, editClickHandler, deleteClickHandler }) => {
   return (
     <div className={classes.read}>
       <tr>
-        <td style={{ color: "red", "font-size": 32 }}>{follower.id}</td>
-        <td
-          style={{ "background-color": "green", color: "red", "font-size": 32 }}
-        >
-          {follower.href}
-        </td>
-        <td>{follower.value}</td>
-        <td>{follower.timestamp}</td>
+        <td className={classes.row1}>{follower.id}</td>
+        <td className={classes.row2}>{follower.href}</td>
+        <td className={classes.row3}>{follower.value}</td>
+        <td className={classes.row4}>{follower.timestamp}</td>
         <td>
           <button type="button" onClick={onClickEditHandler}>
             Edit
