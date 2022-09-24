@@ -1,5 +1,5 @@
 import React from "react";
-import followersBalta from "../followingsData";
+import followersBalta from "./followingsData";
 
 export default function Following() {
   /**

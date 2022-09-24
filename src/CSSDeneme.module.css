@@ -1,0 +1,46 @@
+.pounter {
+  margin: 20px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  background-color: lightgray;
+}
+
+div {
+  margin: 50px 20px;
+}
+
+h1 {
+  border: 2px solid brown;
+}
+
+h2 {
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.but1 {
+  cursor: progress;
+  color: bisque;
+  background-color: green;
+  border: 2px solid black;
+}
+
+.but1:hover {
+  color: bisque;
+  background-color: black;
+  border: 2px solid white;
+  transition: background-color 5s;
+}
+p {
+  width: 400px;
+  height: 400px;
+  background-color: aquamarine;
+  margin: 20px;
+  border: 2px solid black;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
