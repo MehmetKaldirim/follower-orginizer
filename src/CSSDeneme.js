@@ -10,12 +10,16 @@ const CssDeneme = () => {
       </div>
 
       <div>
-        <h2>Civayte baslik</h2>
-        <p>Yillar oncesi billemezdim kafamda catlak oldugunu</p>
+        <h2>bu baska</h2>
+        <p>bu bas ka</p>
       </div>
-      <div>
+      <div className={classes.inline1}>
         <button className={classes.but1}>Kaufen</button>
         <button>Bu da Button</button>
+        <div className={classes.inline1}>
+          <h2>Civayte baslik</h2>
+          <p>Yillar oncesi </p>
+        </div>
       </div>
     </div>
   );
