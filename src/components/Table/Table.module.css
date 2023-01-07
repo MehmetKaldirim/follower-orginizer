@@ -1,47 +1,37 @@
-.app-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 1rem;
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-.table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  width: 100%;
-  font-size: 0.9em;
-  table-layout: auto;
-  table-layout: fixed;
-  table-layout: inherit;
-}
-
-.table thead tr {
-  background-color: blueviolet;
-  color: white;
-  text-align: left;
-  font-weight: bold;
+.table tr:hover {
+  background-color: #ddd;
 }
 
 .table th {
-  padding: 12px 15px;
-  text-align: left;
+  padding: 12px 12px;
+  text-align: center;
   font-size: 32px;
-  table-layout: auto;
+  background-color: #3c0080;
+  color: rgb(143, 25, 25);
 }
 
-.table tbody tr {
-  border-bottom: 1px solid #5c1c1c;
-}
-.table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-.table td {
-  background-color: rgb(205, 235, 255);
+.th1 {
+  min-width: 80px;
 }
 
+.th2 {
+  min-width: 590px;
+  overflow: hidden;
+}
+.th3 {
+  min-width: 300px;
+}
+.th4 {
+  min-width: 200px;
+  max-width: 200px;
+}
 .form {
   display: flex;
-  gap: 5px;
+  gap: 15px;
 }
 
 .form td:last-child {

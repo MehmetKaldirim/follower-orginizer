@@ -137,18 +137,19 @@ const Table = () => {
     console.log("here new diference");
     console.log(followingButNotFollowers);*/
   return (
-    <div className="app-container">
+    <div>
       <form onSubmit={submitEditFormHandler}>
         <table className={classes.table}>
-          <thead>
+          <div className={classes.header}>
             <tr>
-              <th>Id</th>
-              <th>Href</th>
-              <th>Value</th>
-              <th>Timestamp</th>
-              <th>Actions</th>
+              <th className={classes.th1}>Id</th>
+              <th className={classes.th2}>Href</th>
+              <th className={classes.th3}>Value</th>
+              <th className={classes.th4}>Timestamp</th>
+              <th className={classes.th4}>Actions</th>
             </tr>
-          </thead>
+          </div>
+
           <tbody>
             {notFollowers.map((follower) => (
               <Fragment>
@@ -170,7 +171,7 @@ const Table = () => {
           </tbody>
         </table>
       </form>
-      <h2>Serach a follower</h2>
+      <h2>Search a follower</h2>
       <form className={classes.form} onSubmit={submitFormHandler}>
         <input
           type="text"

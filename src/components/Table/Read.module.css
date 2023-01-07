@@ -1,27 +1,28 @@
 td {
-  padding: 12px 15px;
-  text-align: left;
   font-size: 32px;
-  table-layout: auto;
+  padding: 12px 12px;
+  text-align: left;
+  background-color: greenyellow;
 }
 
 .row1 {
-  color: brown;
-  width: 150px;
+  min-width: 80px;
+  max-width: 90px;
 }
 
 .row2 {
-  background-color: blanchedalmond;
-  width: 50px;
+  min-width: 590px;
+  max-width: 590px;
   overflow: hidden;
 }
 
 .row3 {
-  color: rgb(165, 42, 65);
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  overflow: hidden;
 }
 
 .row4 {
-  color: rgb(42, 165, 81);
-  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
 }

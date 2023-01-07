@@ -29,8 +29,8 @@ for (let i = 1; i < followings.length; i++) {
   const following = { ...newFollowing, id: i };
   newFollowing.push(following);
 }
-
-for (let i = 199; i < difBetween.length; i++) {
+//difBetween.length
+for (let i = 523; i <difBetween.length; i++) {
   const dummyFollowing = difBetween[i];
   const following = { ...dummyFollowing, id: i };
   followingButNotFollowers.push(following);
@@ -43,3 +43,5 @@ const allData = {
 };
 
 export default allData;
+
+

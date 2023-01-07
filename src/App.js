@@ -16,7 +16,7 @@ function App() {
       <Header />
       {!isAuth && <Auth />}
       {isAuth && <UserProfile />}
-      {isAuth && <CssDeneme />}
+      {isAuth && <Table />}
       <Counter />
     </Fragment>
   );

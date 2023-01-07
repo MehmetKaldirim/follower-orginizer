@@ -15,7 +15,7 @@ const ReadOnlyRow = ({ follower, editClickHandler, deleteClickHandler }) => {
         <td className={classes.row2}>{follower.href}</td>
         <td className={classes.row3}>{follower.value}</td>
         <td className={classes.row4}>{follower.timestamp}</td>
-        <td>
+        <td className={classes.row4}>
           <button type="button" onClick={onClickEditHandler}>
             Edit
           </button>

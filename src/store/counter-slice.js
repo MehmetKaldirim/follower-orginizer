@@ -13,6 +13,7 @@ const counterSlice = createSlice({
       state.counter--;
     },
     increase(state, action) {
+      //here PAYLOAD is must , not any other name
       state.counter = state.counter + action.payload;
     },
     toggleCounter(state) {
@@ -20,7 +21,6 @@ const counterSlice = createSlice({
     },
   },
 });
-
 
 export const counterActions = counterSlice.actions;
 
